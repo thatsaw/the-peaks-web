@@ -1,9 +1,14 @@
 {
-  "name": "vite-project",
+  "name": "the-peaks-web",
+  "description": "Open journalism for everyone.",
+  "author": "@thatsaw",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "coverage": "vitest run --coverage",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
@@ -13,10 +18,18 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@testing-library/react": "^13.4.0",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
+    "@types/react-test-renderer": "^18.0.0",
     "@vitejs/plugin-react": "^2.2.0",
+    "@vitest/coverage-c8": "^0.25.3",
+    "@vitest/ui": "^0.25.3",
+    "happy-dom": "^7.7.0",
+    "jsdom": "^20.0.3",
+    "react-test-renderer": "^18.2.0",
     "typescript": "^4.6.4",
-    "vite": "^3.2.3"
+    "vite": "^3.2.3",
+    "vitest": "^0.25.3"
   }
 }
