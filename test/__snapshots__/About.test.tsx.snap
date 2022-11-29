@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`About should render information 1`] = `
+<h1>
+  About
+</h1>
+`;

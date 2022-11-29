@@ -1,7 +1,7 @@
 import React from "react";
 import { expect, test } from "vitest";
 import renderer from "react-test-renderer";
-import App from "../src/App";
+import { About } from "../src/routes/About";
 
 function toJson(component: renderer.ReactTestRenderer) {
   const result = component.toJSON();
@@ -10,8 +10,8 @@ function toJson(component: renderer.ReactTestRenderer) {
   return result as renderer.ReactTestRendererJSON;
 }
 
-test("App should render index page", () => {
-  const component = renderer.create(<App />);
+test("About should render information", () => {
+  const component = renderer.create(<About />);
 
   const tree = toJson(component);
   expect(tree).toMatchSnapshot();

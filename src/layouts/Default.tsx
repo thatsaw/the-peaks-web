@@ -1,19 +1,18 @@
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import { dark } from "../styles/dark.css";
 import { light } from "../styles/light.css";
+import { Nav } from "../components/Nav";
 
-type Props = {
-  children: React.ReactNode;
-};
-
-export function Default({ children }: Props) {
+export function Default() {
   const [isDark, setIsDark] = useState(false);
 
   return (
     <div id="app" className={isDark ? dark : light}>
       <header>Header</header>
       <main>
-        {children}
+        <Nav />
+        <Outlet />
         <button onClick={() => setIsDark((currentTheme) => !currentTheme)}>
           {isDark ? "Dark" : "Light"}
         </button>
