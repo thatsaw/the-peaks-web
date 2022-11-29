@@ -1,0 +1,122 @@
+name: test
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "scripts/**"
+
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "scripts/**"
+
+# Stop obsolete workflows
+concurrency:
+  group: ci-tests-${{ github.ref }}-1
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+    working-directory: .
+
+jobs:
+  # Label of the container job
+  deploy:
+    name: 🧪 Testings
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [19.x]
+        experimental: [false]
+
+    timeout-minutes: 10
+    # Container must run in Linux based operating systems
+    runs-on: ${{ matrix.os }}
+
+    permissions:
+      contents: read
+
+    steps:
+      # Downloads a copy of the code in your repository before running CI tests
+      - name: 🛎️ Checkout repository
+        uses: actions/checkout@main
+
+      - name: 🧲 Cache multiple paths and browsers
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: |
+            ~/.npm
+            ~/cache
+            !~/cache/exclude
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        name: 🗂️ List the state of node_modules
+        continue-on-error: true
+        run: npm list
+
+      - name: 🪀 Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@main
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      # Performs a clean installation of all dependencies in the `package.json` file
+      # For more information, see https://docs.npmjs.com/cli/ci.html
+      - name: 📦 Install packages
+        run: npm ci
+        env:
+          # Disable hooks installation
+          # Read: https://typicode.github.io/husky/#/?id=with-env-variables
+          HUSKY: 0
+
+      - name: 🪫 Check outdated packages
+        continue-on-error: true
+        run: npm outdated
+
+      - name: 👾 Check for known security issues
+        run: npm audit --audit-level=critical
+
+      - name: 💅 Check format
+        run: npm run check:format
+
+      - name: 🩻 Check type
+        run: npm run check:type
+
+      - name: 🧿 Check ESLint
+        run: npm run lint --if-present
+
+      - name: 🔎 Review code
+        run: npm run review --if-present
+
+      - name: 🃏 Run unit tests
+        run: npm run coverage
+
+      - name: 📥 Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: 🎭 Run E2E tests
+        run: npm run test:e2e
+
+      - name: 🎈 Upload artifacts
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
