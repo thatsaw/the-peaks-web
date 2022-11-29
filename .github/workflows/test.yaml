@@ -28,7 +28,7 @@ defaults:
 jobs:
   # Label of the container job
   deploy:
-    name: 🧪 Testings
+    name: 🧪 Testing
     strategy:
       fail-fast: true
       matrix:
@@ -93,10 +93,10 @@ jobs:
         run: npm audit --audit-level=critical
 
       - name: 💅 Check format
-        run: npm run check:format
+        run: npm run format:check
 
-      - name: 🩻 Check type
-        run: npm run check:type
+      - name: 🩻 Check types
+        run: npm run typecheck
 
       - name: 🧿 Check ESLint
         run: npm run lint

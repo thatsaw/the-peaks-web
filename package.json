@@ -7,9 +7,9 @@
   "type": "module",
   "scripts": {
     "prepare": "husky install",
-    "check:format": "npx prettier --check .",
-    "check:type": "tsc --noEmit",
-    "format": "npx prettier --write .",
+    "format:check": "npx prettier --check .",
+    "format:write": "npx prettier --write .",
+    "typecheck": "tsc --noEmit",
     "lint": "npx eslint \"{src,apps,libs,test}/**/*.{ts,tsx,js,jsx}\" --fix",
     "test": "vitest",
     "test:ui": "vitest --ui",
