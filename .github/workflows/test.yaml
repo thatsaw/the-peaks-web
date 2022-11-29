@@ -58,12 +58,14 @@ jobs:
           path: |
             ~/.npm
             ~/cache
+            ~/.cache/ms-playwright/
             !~/cache/exclude
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+            ${{ runner.os }}-playwright-
 
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: 🗂️ List the state of node_modules
@@ -108,6 +110,7 @@ jobs:
         run: npm run coverage
 
       - name: 📥 Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
 
       - name: 🎭 Run E2E tests
