@@ -13,6 +13,6 @@ function toJson(component: renderer.ReactTestRenderer) {
 test("App should render index page", () => {
   const component = renderer.create(<App />);
 
-  let tree = toJson(component);
+  const tree = toJson(component);
   expect(tree).toMatchSnapshot();
 });

@@ -99,12 +99,12 @@ jobs:
         run: npm run check:type
 
       - name: 🧿 Check ESLint
-        run: npm run lint --if-present
+        run: npm run lint
 
       - name: 🔎 Review code
         run: npm run review --if-present
 
-      - name: 🃏 Run unit tests
+      - name: ⚡️ Run unit tests
         run: npm run coverage
 
       - name: 📥 Install Playwright browsers
