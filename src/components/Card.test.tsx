@@ -4,6 +4,7 @@ import { Card } from "./Card";
 
 describe("Card", () => {
   const data = {
+    index: 1,
     title:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
     subtitle:
@@ -13,7 +14,7 @@ describe("Card", () => {
   };
 
   beforeEach(() => {
-    render(<Card {...data} />);
+    render(<Card {...data} showImage showSubtitle />);
   });
 
   it("should have title, subtitle and image", () => {
