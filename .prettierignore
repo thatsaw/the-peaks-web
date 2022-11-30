@@ -1,8 +1,11 @@
 # Ignore artifacts:
 build
-coverage
+dist
 
+# Ignore test outputs:
+coverage
 playwright-report
 test-results
 
+# Ignore user specific:
 .dump
