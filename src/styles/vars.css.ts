@@ -8,6 +8,6 @@ globalStyle("#app", {
   padding: vars.space.large,
   fontFamily: vars.font.body,
   backgroundColor: vars.color.background,
-  color: vars.color.text,
+  color: vars.color.content,
   minHeight: "100vh",
 });
