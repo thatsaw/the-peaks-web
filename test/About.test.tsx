@@ -5,14 +5,17 @@ import { About } from "../src/routes/About";
 
 function toJson(component: renderer.ReactTestRenderer) {
   const result = component.toJSON();
+
   expect(result).toBeDefined();
-  expect(result).not.toBeInstanceOf(Array);
+  // Disable this if we are using Fragment component
+  // expect(result).not.toBeInstanceOf(Array);
+
   return result as renderer.ReactTestRendererJSON;
 }
 
-test("About should render information", () => {
+test("About page should show information", () => {
   const component = renderer.create(<About />);
-
   const tree = toJson(component);
+
   expect(tree).toMatchSnapshot();
 });

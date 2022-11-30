@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { todoListQuery } from "../api/todo";
+import { todoListQuery } from "../api/todos";
 import { Counter } from "../components/Counter";
 import { Spinner } from "../components/Spinner";
 

@@ -7,7 +7,7 @@ import { Default } from "./layouts/Default";
 import { Home } from "./routes/Home";
 import { About } from "./routes/About";
 import { Error } from "./routes/Error";
-import { loader as todoLoader } from "./api/todo";
+import { loader as todoLoader } from "./api/todos";
 
 const queryClient = new QueryClient({
   defaultOptions: {

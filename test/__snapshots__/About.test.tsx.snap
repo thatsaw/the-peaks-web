@@ -1,7 +1,50 @@
 // Vitest Snapshot v1
 
-exports[`About should render information 1`] = `
-<h1>
-  About
-</h1>
+exports[`About page should show information 1`] = `
+[
+  <h1>
+    About
+  </h1>,
+  <div
+    className="Card_wrapper__1sumbop0"
+  >
+    <div>
+      <img
+        alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+        className="Card_imageCx__1sumbop4"
+        height={400}
+        src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA14DAmV.img?h=0&w=600&m=6&q=60&u=t&o=f&l=f"
+        width={600}
+      />
+    </div>
+    <div
+      className="Card_container__1sumbop1"
+    >
+      <div
+        className="Card_titleCx__1sumbop2"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      </div>
+      <div
+        className="Card_subtitleCx__1sumbop3"
+      >
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      </div>
+    </div>
+  </div>,
+  <div
+    className="Card_wrapper__1sumbop0"
+  >
+    <div />
+    <div
+      className="Card_container__1sumbop1"
+    >
+      <div
+        className="Card_titleCx__1sumbop2"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      </div>
+    </div>
+  </div>,
+]
 `;

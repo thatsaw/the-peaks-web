@@ -1,6 +1,15 @@
-import { Card } from "../components/Card";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Card } from "./Card";
 
-const data = {
+export default {
+  title: "Components/Card",
+  component: Card,
+} as ComponentMeta<typeof Card>;
+
+const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
   title:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
   subtitle:
@@ -8,13 +17,3 @@ const data = {
   image:
     "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA14DAmV.img?h=0&w=600&m=6&q=60&u=t&o=f&l=f",
 };
-
-export function About() {
-  return (
-    <>
-      <h1>About</h1>
-      <Card {...data} />
-      <Card title={data.title} />
-    </>
-  );
-}
