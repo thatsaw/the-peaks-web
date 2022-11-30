@@ -1,6 +1,10 @@
 import { style, keyframes } from "@vanilla-extract/css";
+import { vars } from "../styles/vars.css";
 
-const rotate = keyframes({
+const rotation = keyframes({
+  "0%": {
+    transform: "rotate(0deg)",
+  },
   "100%": {
     transform: "rotate(360deg)",
   },
@@ -9,16 +13,10 @@ const rotate = keyframes({
 export const ring = style({
   width: "48px",
   height: "48px",
+  border: `5px solid ${vars.color.brand}`,
+  borderBottomColor: "transparent",
   borderRadius: "50%",
-  position: "relative",
-  animation: `${rotate} 1s linear infinite`,
-  ":before": {
-    content: "",
-    boxSizing: "border-box",
-    position: "absolute",
-    inset: "0px",
-    borderRadius: "50%",
-    border: "5px solid rgba(0, 0, 0, 0.5)",
-    animation: "prixClipFix 2s linear infinite",
-  },
+  display: "inline-block",
+  boxSizing: "border-box",
+  animation: `${rotation} 1s linear infinite`,
 });

@@ -3,7 +3,14 @@ import { createThemeContract } from "@vanilla-extract/css";
 export const contract = createThemeContract({
   color: {
     brand: "",
-    text: "",
+    heading: "",
+    caption: "",
+    datetime: "",
+    content: "",
     background: "",
+    yellow: "",
+    green: "",
+    red: "",
+    blue: "",
   },
 });
