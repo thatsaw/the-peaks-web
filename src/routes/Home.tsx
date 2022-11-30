@@ -1,20 +1,24 @@
 import { useLoaderData } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { todoListQuery } from "../api/todo";
 import { Counter } from "../components/Counter";
-import type { Todo } from "../api/todo";
 
 type LoaderData = {
-  todos: Todo[];
+  q?: string;
 };
 
 export function Home() {
-  const { todos } = useLoaderData() as LoaderData;
+  const { q } = useLoaderData() as LoaderData;
+  const { data: todos, isLoading } = useQuery(todoListQuery(q));
 
-  return (
+  return isLoading ? (
+    <div>Loading....</div>
+  ) : (
     <>
       <h1>The Peaks</h1>
-      {todos.length ? (
+      {todos?.todos.length ? (
         <ul>
-          {todos.map((todo) => (
+          {todos.todos.map((todo) => (
             <li key={todo.id}>
               {todo.id}: {todo.title}
             </li>
