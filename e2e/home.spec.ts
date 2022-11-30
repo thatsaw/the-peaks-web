@@ -5,6 +5,6 @@ test.describe("Home page", () => {
     await page.goto("/");
 
     // Expect a title "to contain" a substring.
-    await expect(page).toHaveTitle(/the peaks/i);
+    await expect(page).toHaveTitle(/open journalism for everyone - the peaks/i);
   });
 });

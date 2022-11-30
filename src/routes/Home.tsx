@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { todoListQuery } from "../api/todo";
 import { Counter } from "../components/Counter";
+import { Spinner } from "../components/Spinner";
 
 type LoaderData = {
   q?: string;
@@ -12,10 +13,9 @@ export function Home() {
   const { data: todos, isLoading } = useQuery(todoListQuery(q));
 
   return isLoading ? (
-    <div>Loading....</div>
+    <Spinner />
   ) : (
     <>
-      <h1>The Peaks</h1>
       {todos?.todos.length ? (
         <ul>
           {todos.todos.map((todo) => (

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Outlet, useNavigation } from "react-router-dom";
 import { dark } from "../styles/dark.css";
 import { light } from "../styles/light.css";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
 
 export function Default() {
@@ -10,7 +12,7 @@ export function Default() {
 
   return (
     <div id="app" className={isDark ? dark : light}>
-      <header>Header</header>
+      <Header />
       <main>
         <Nav />
         <div
@@ -23,7 +25,7 @@ export function Default() {
           {isDark ? "Dark" : "Light"}
         </button>
       </main>
-      <footer>Footer</footer>
+      <Footer />
     </div>
   );
 }
