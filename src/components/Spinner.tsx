@@ -1,5 +1,5 @@
-import { ring } from "./Spinner.css";
+import styles from "./Spinner.module.css";
 
 export function Spinner() {
-  return <span data-testid="spinner" className={ring} />;
+  return <span data-testid="spinner" className={styles.ring} />;
 }

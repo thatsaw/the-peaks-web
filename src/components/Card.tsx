@@ -1,12 +1,5 @@
-import {
-  wrapper,
-  overlaySmall,
-  overlayLarge,
-  titleLargeCx,
-  titleSmallCx,
-  subtitleCx,
-  imageCx,
-} from "./Card.css";
+import { useMemo } from "react";
+import styles from "./Card.module.css";
 
 type Props = {
   title: string;
@@ -14,32 +7,27 @@ type Props = {
   image?: string;
   showImage?: boolean;
   showSubtitle?: boolean;
-  index: number;
 };
 
-export function Card({
-  title,
-  subtitle,
-  image,
-  showImage,
-  showSubtitle,
-  index,
-}: Props) {
+export function Card({ title, subtitle, image }: Props) {
+  const colors = ["yellow", "green", "red", "blue"];
+  const color = useMemo(
+    () => colors[Math.floor(Math.random() * colors.length)],
+    [colors]
+  );
+
   return (
-    <div className={wrapper[index]}>
-      {showImage && image && (
-        <picture>
-          <img className={imageCx} src={image} alt={title} />
-        </picture>
-      )}
-      <div className={showImage ? overlaySmall : overlayLarge}>
-        <div className={showSubtitle ? titleLargeCx : titleSmallCx}>
-          {title}
-        </div>
-        {showSubtitle && subtitle && (
-          <div className={subtitleCx}>{subtitle}</div>
-        )}
-      </div>
-    </div>
+    <figure
+      className={styles.figure}
+      style={{
+        borderBottom: `5px solid ${color}`,
+      }}
+    >
+      <img src={image} alt={title} className={styles.image} style={{}} />
+      <figcaption className={styles.figcaption}>
+        <div className={styles.title}>{title}</div>
+        <div className={styles.subtitle}>{subtitle}</div>
+      </figcaption>
+    </figure>
   );
 }

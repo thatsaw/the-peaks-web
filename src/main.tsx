@@ -8,6 +8,7 @@ import { Home } from "./routes/Home";
 import { About } from "./routes/About";
 import { Error } from "./routes/Error";
 import { loader as todoLoader } from "./api/todos";
+import "./main.css";
 
 const queryClient = new QueryClient({
   defaultOptions: {

@@ -1,0 +1,10 @@
+.board {
+  display: grid;
+  grid-template-columns: minmax(45%, auto) repeat(2, 1fr);
+  /* grid-template-columns: 2fr 1fr 1fr; */
+  grid-template-rows: 1.5fr 1fr;
+  grid-template-areas: "area1 area2 area3" "area1 area4 area5";
+  grid-auto-flow: dense;
+  gap: 2rem;
+  background-color: red;
+}

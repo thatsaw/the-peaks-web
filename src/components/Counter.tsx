@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { card } from "./Counter.css";
+import styles from "./Counter.module.css";
 
 export function Counter() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className={card}>
+    <div className={styles.card}>
       <button onClick={() => setCount((count) => count + 1)}>
         count is {count}
       </button>

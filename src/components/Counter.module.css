@@ -1,3 +1,4 @@
+/*
 import { style } from "@vanilla-extract/css";
 import { sprinkles } from "../styles/sprinkles.css";
 
@@ -20,3 +21,11 @@ export const card = style([
     },
   },
 ]);
+*/
+
+.card {
+  display: flex;
+  &:hover {
+    outline: 2px solid currentColor;
+  }
+}

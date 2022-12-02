@@ -15,9 +15,4 @@ module.exports = {
   features: {
     storyStoreV7: true,
   },
-  async viteFinal(config) {
-    return mergeConfig(config, {
-      plugins: [require("@vanilla-extract/vite-plugin").vanillaExtractPlugin()],
-    });
-  },
 };

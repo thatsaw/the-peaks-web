@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { Outlet, useNavigation } from "react-router-dom";
-import { dark } from "../styles/dark.css";
-import { light } from "../styles/light.css";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
+import "./Default.css";
 
 export function Default() {
   const [isDark, setIsDark] = useState(false);
   const navigation = useNavigation();
 
   return (
-    <div id="app" className={isDark ? dark : light}>
+    <div id="app" className={isDark ? "dark" : "light"}>
       <Header />
       <main>
         <Nav />

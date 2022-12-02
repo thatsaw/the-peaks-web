@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { active, pending } from "./Nav.css";
+import styles from "./Nav.module.css";
 
 const links = [
   {
@@ -21,7 +21,7 @@ export function Nav() {
             <NavLink
               to={to}
               className={({ isActive, isPending }) =>
-                isActive ? active : isPending ? pending : ""
+                isActive ? styles.active : isPending ? styles.pending : ""
               }
             >
               {name}
