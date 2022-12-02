@@ -1,5 +1,3 @@
-import { Grid } from "../components/Grid";
-
 const data = [
   {
     title:
@@ -42,7 +40,6 @@ export function About() {
   return (
     <>
       <h1>About</h1>
-      <Grid data={data} />
     </>
   );
 }
