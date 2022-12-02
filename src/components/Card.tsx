@@ -25,8 +25,8 @@ export function Card({ title, subtitle, image }: Props) {
     >
       <img src={image} alt={title} className={styles.image} style={{}} />
       <figcaption className={styles.figcaption}>
-        <div className={styles.title}>{title}</div>
-        <div className={styles.subtitle}>{subtitle}</div>
+        <p className={styles.title}>{title}</p>
+        <p className={styles.subtitle}>{subtitle}</p>
       </figcaption>
     </figure>
   );

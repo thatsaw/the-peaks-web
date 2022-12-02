@@ -3,8 +3,8 @@ import styles from "./Home.module.css";
 
 export function Home() {
   return (
-    <div>
-      <div className={styles.board}>
+    <section>
+      <div className={styles.wrapper}>
         {data.map((post, index) => (
           <div
             key={post.title}
@@ -17,8 +17,14 @@ export function Home() {
           </div>
         ))}
       </div>
-      <div>Theres more....</div>
-    </div>
+      <div className={styles.flexer} style={{}}>
+        {data.slice(0, 3).map((post) => (
+          <div key={post.title}>
+            <Card {...post} />
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
