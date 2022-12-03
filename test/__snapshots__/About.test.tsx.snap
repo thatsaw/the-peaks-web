@@ -1,7 +1,17 @@
 // Vitest Snapshot v1
 
 exports[`About page should show information 1`] = `
-<h1>
-  About
-</h1>
+[
+  <h1>
+    About
+  </h1>,
+  <p>
+    0
+  </p>,
+  <button
+    onClick={[Function]}
+  >
+    Add
+  </button>,
+]
 `;

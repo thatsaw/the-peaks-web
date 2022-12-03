@@ -7,7 +7,7 @@ import { Default } from "./layouts/Default";
 import { Home } from "./routes/Home";
 import { About } from "./routes/About";
 import { Error } from "./routes/Error";
-import { loader as todoLoader } from "./api/todos";
+import { loader as postLoader } from "./api/content";
 import "./main.css";
 
 const queryClient = new QueryClient({
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        loader: todoLoader(queryClient),
+        loader: postLoader(queryClient),
       },
       {
         path: "about",

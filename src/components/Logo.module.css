@@ -1,5 +1,10 @@
 .logo {
+  cursor: pointer;
   color: white;
-  font-size: 32px;
+  font-size: 40px;
   font-weight: bold;
+  word-spacing: -10px;
+}
+.logo:hover {
+  color: aquamarine;
 }

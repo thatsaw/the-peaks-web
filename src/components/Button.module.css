@@ -1,4 +1,5 @@
 .primary {
+  cursor: pointer;
   color: white;
   background-color: var(--color-brand);
   padding: 5px 10px;
