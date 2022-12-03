@@ -1,6 +1,33 @@
-.button {
-  color: red;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 10px 20px 10px 20px;
-  border-radius: 10px;
+.primary {
+  color: white;
+  background-color: var(--color-brand);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.primary a {
+  color: white;
+  display: flex;
+  place-items: center;
+  gap: 8px;
+}
+.primary a:hover {
+  color: cyan;
+}
+.primary a span {
+  display: none;
+}
+
+.secondary {
+  color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+@media only screen and (min-width: 640px) {
+  .primary a span {
+    display: block;
+  }
 }

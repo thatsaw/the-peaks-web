@@ -14,6 +14,12 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
+  --min-width-xs: 640px;
+  --min-width-sm: 768px;
+  --min-width-md: 1024px;
+  --min-width-lg: 1280px;
+  --min-width-xl: 1536px;
+
   --color-brand: rgb(30, 46, 121);
   --color-yellow: #f2c833;
   --color-green: #528e42;

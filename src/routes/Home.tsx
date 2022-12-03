@@ -1,9 +1,11 @@
 import { Card } from "../components/Card";
+import { Nav } from "../components/Nav";
 import styles from "./Home.module.css";
 
 export function Home() {
   return (
     <section>
+      <Nav heading="Top stories" />
       <div className={styles.wrapper}>
         {data.map((post, index) => (
           <div

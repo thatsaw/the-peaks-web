@@ -1,34 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { Heading } from "./Heading";
+import { Button } from "./Button";
+import { Dropdown } from "./Dropdown";
 import styles from "./Nav.module.css";
 
-const links = [
-  {
-    to: "/",
-    name: "Home",
-  },
-  {
-    to: "about",
-    name: "About",
-  },
-];
+type Props = {
+  heading: string;
+};
 
-export function Nav() {
+export function Nav({ heading }: Props) {
   return (
-    <nav>
-      <ul>
-        {links.map(({ to, name }) => (
-          <li key={to}>
-            <NavLink
-              to={to}
-              className={({ isActive, isPending }) =>
-                isActive ? styles.active : isPending ? styles.pending : ""
-              }
-            >
-              {name}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+    <nav className={styles.wrapper}>
+      <Heading text={heading} />
+      <div className={styles.container}>
+        <Button text="View Bookmark" to="/about" />
+        <Dropdown />
+      </div>
     </nav>
   );
 }

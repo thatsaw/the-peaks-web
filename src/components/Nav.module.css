@@ -1,7 +1,25 @@
+.wrapper {
+  display: flex;
+  place-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.container {
+  display: inline-flex;
+  gap: 10px;
+}
+
 .active {
   color: red;
 }
 
 .pending {
   color: gray;
+}
+
+@media only screen and (min-width: 1536px) {
+  .wrapper {
+    padding: 0;
+  }
 }
