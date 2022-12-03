@@ -21,6 +21,10 @@ p {
   margin-top: 1rem;
 }
 
+.section h1 {
+  padding-left: 1rem;
+}
+
 @media only screen and (min-width: 640px) {
   .wrapper {
     gap: 10px;
@@ -89,5 +93,9 @@ p {
 @media only screen and (min-width: 1536px) {
   .wrapper div:nth-child(n) {
     display: block;
+  }
+
+  .section h1 {
+    padding-left: 0;
   }
 }

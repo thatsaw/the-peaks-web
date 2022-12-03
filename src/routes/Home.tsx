@@ -1,32 +1,45 @@
 import { Card } from "../components/Card";
 import { Nav } from "../components/Nav";
+import { Heading } from "../components/Heading";
 import styles from "./Home.module.css";
 
 export function Home() {
   return (
-    <section>
-      <Nav heading="Top stories" />
-      <div className={styles.wrapper}>
-        {data.map((post, index) => (
-          <div
-            key={post.title}
-            className={styles.container}
-            style={{
-              gridArea: `area${index + 1}`,
-            }}
-          >
-            <Card {...post} />
-          </div>
-        ))}
-      </div>
-      <div className={styles.flexer} style={{}}>
-        {data.slice(0, 3).map((post) => (
-          <div key={post.title}>
-            <Card {...post} />
-          </div>
-        ))}
-      </div>
-    </section>
+    <>
+      <section>
+        <Nav heading="Top stories" />
+        <div className={styles.wrapper}>
+          {data.map((post, index) => (
+            <div
+              key={post.title}
+              className={styles.container}
+              style={{
+                gridArea: `area${index + 1}`,
+              }}
+            >
+              <Card {...post} />
+            </div>
+          ))}
+        </div>
+        <div className={styles.flexer} style={{}}>
+          {data.slice(0, 3).map((post) => (
+            <div key={post.title}>
+              <Card {...post} />
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className={styles.section}>
+        <Heading text="Sports" />
+        <div className={styles.flexer} style={{}}>
+          {data.slice(0, 3).map((post) => (
+            <div key={post.title}>
+              <Card {...post} />
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
 
