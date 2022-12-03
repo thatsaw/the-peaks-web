@@ -9,7 +9,9 @@ export default {
   decorators: [withRouter],
 } as ComponentMeta<typeof Nav>;
 
-const Template: ComponentStory<typeof Nav> = () => <Nav />;
+const Template: ComponentStory<typeof Nav> = (args) => <Nav {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  heading: "Top stories",
+};
