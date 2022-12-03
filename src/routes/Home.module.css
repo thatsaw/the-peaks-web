@@ -9,7 +9,6 @@ p {
   grid-template-areas: "area1" "area2" "area3" "area4" "area5";
   grid-auto-flow: dense;
   row-gap: 10px;
-  /* background-color: yellow; */
 }
 .wrapper div:nth-child(n + 4) {
   display: none;
@@ -20,35 +19,25 @@ p {
   flex-direction: column;
   gap: 10px;
   margin-top: 1rem;
-
-  /* background-color: yellow; */
 }
 
 @media only screen and (min-width: 640px) {
   .wrapper {
-    /* background-color: green; */
     gap: 10px;
   }
   .wrapper div:nth-child(-n + 4) {
     display: block;
   }
-
-  .flexer {
-    /* background-color: green; */
-  }
 }
 
 @media only screen and (min-width: 768px) {
   .wrapper {
-    /* background-color: red; */
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-template-areas: "area1 area2" "area3 area4";
   }
 
   .flexer {
-    /* background-color: red; */
-
     flex-direction: row;
     column-gap: 1rem;
   }
@@ -59,8 +48,6 @@ p {
 
 @media only screen and (min-width: 1024px) {
   .wrapper {
-    /* background-color: blue; */
-
     display: grid;
     grid-template-columns: minmax(auto, 45%) repeat(2, 1fr);
     grid-template-rows: 1.5fr 1fr;
@@ -92,7 +79,6 @@ p {
   }
 
   .flexer {
-    /* background-color: blue; */
     column-gap: 2rem;
   }
   .flexer div figcaption p:nth-of-type(2) {
@@ -100,25 +86,8 @@ p {
   }
 }
 
-@media only screen and (min-width: 1280px) {
-  .wrapper {
-    /* background-color: black; */
-  }
-
-  .flexer {
-    /* background-color: black; */
-  }
-}
-
 @media only screen and (min-width: 1536px) {
-  .wrapper {
-    /* background-color: brown; */
-  }
   .wrapper div:nth-child(n) {
     display: block;
-  }
-
-  .flexer {
-    /* background-color: brown; */
   }
 }

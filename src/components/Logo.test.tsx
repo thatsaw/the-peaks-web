@@ -1,18 +1,18 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { Nav } from "./Nav";
+import { Logo } from "./Logo";
 
-describe("Nav", () => {
+describe("Logo", () => {
   beforeEach(() => {
     render(
       <MemoryRouter>
-        <Nav heading="Heading" />
+        <Logo />
       </MemoryRouter>
     );
   });
 
-  it("should have heading and buttons", () => {
-    expect(screen.getByText(/view bookmark/i)).toBeDefined();
+  it("should have text", () => {
+    expect(screen.getByText(/the peaks/i)).toBeDefined();
   });
 });
