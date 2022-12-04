@@ -2,12 +2,12 @@ import { useMemo } from "react";
 import styles from "./Card.module.css";
 
 type Props = {
-  webTitle: string;
-  subtitle?: string;
+  headline: string;
+  trailText?: string;
   thumbnail?: string;
 };
 
-export function Card({ webTitle, subtitle, thumbnail }: Props) {
+export function Card({ headline, trailText, thumbnail }: Props) {
   const colors = ["yellow", "green", "red", "blue"];
   const color = useMemo(
     () => colors[Math.floor(Math.random() * colors.length)],
@@ -21,10 +21,10 @@ export function Card({ webTitle, subtitle, thumbnail }: Props) {
         borderBottom: `5px solid ${color}`,
       }}
     >
-      <img src={thumbnail} alt={webTitle} className={styles.thumbnail} />
+      <img src={thumbnail} alt={headline} className={styles.thumbnail} />
       <figcaption className={styles.figcaption}>
-        <p className={styles.webTitle}>{webTitle}</p>
-        <p className={styles.subtitle}>{subtitle}</p>
+        <p className={styles.webTitle}>{headline}</p>
+        <p className={styles.subtitle}>{trailText}</p>
       </figcaption>
     </figure>
   );

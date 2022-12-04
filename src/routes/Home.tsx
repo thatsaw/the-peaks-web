@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Card } from "../components/Card";
 import { Nav } from "../components/Nav";
@@ -34,14 +34,18 @@ export function Home() {
                 gridArea: `area${index + 1}`,
               }}
             >
-              <Card {...post} thumbnail={post.fields?.thumbnail} />
+              <Link to={`p/${encodeURIComponent(post.id)}`}>
+                <Card {...post.fields} />
+              </Link>
             </div>
           ))}
         </div>
         <div className={styles.flexer} style={{}}>
           {flex?.map((post) => (
             <div key={post.webTitle}>
-              <Card {...post} thumbnail={post.fields?.thumbnail} />
+              <Link to={`p/${encodeURIComponent(post.id)}`}>
+                <Card {...post.fields} />
+              </Link>
             </div>
           ))}
         </div>
@@ -51,7 +55,9 @@ export function Home() {
         <div className={styles.flexer} style={{}}>
           {sports?.slice(0, 3).map((post) => (
             <div key={post.webTitle}>
-              <Card {...post} thumbnail={post.fields?.thumbnail} />
+              <Link to={`p/${encodeURIComponent(post.id)}`}>
+                <Card {...post.fields} />
+              </Link>
             </div>
           ))}
         </div>

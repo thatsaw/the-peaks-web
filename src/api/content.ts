@@ -1,4 +1,5 @@
 import type { QueryClient } from "@tanstack/react-query";
+import type { LoaderFunctionArgs } from "react-router-dom";
 import { fetcher } from "../utils/fetcher";
 
 export type Content = {
@@ -21,6 +22,8 @@ export type Content = {
       webUrl: string;
       apiUrl: string;
       fields: {
+        headline: string;
+        trailText: string;
         thumbnail: string;
       };
       isHosted: boolean;
@@ -36,7 +39,7 @@ export async function contentList(q?: string) {
   const top: Content = await fetcher({
     url: `https://content.guardianapis.com/search?q=${q}&api-key=${
       import.meta.env.VITE_API_KEY
-    }&show-fields=thumbnail&page-size=${pageSize}`,
+    }&show-fields=thumbnail,headline,trailText&page-size=${pageSize}`,
   });
 
   q = "sports";
@@ -45,7 +48,7 @@ export async function contentList(q?: string) {
   const sports: Content = await fetcher({
     url: `https://content.guardianapis.com/search?q=${q}&api-key=${
       import.meta.env.VITE_API_KEY
-    }&show-fields=thumbnail&page-size=${pageSize}`,
+    }&show-fields=thumbnail,headline,trailText&page-size=${pageSize}`,
   });
 
   return { top, sports };
@@ -60,8 +63,7 @@ export function contentListQuery(q?: string) {
 
 export const loader =
   (queryClient: QueryClient) =>
-  // TODO: Replace any with a type
-  async ({ request }: any) => {
+  async ({ request }: LoaderFunctionArgs) => {
     const url = new URL(request.url);
     const q = url.searchParams.get("q");
 

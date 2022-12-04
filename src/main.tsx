@@ -5,9 +5,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Default } from "./layouts/Default";
 import { Home } from "./routes/Home";
+import { Post } from "./routes/Post";
 import { About } from "./routes/About";
 import { Error } from "./routes/Error";
-import { loader as postLoader } from "./api/content";
+import { loader as contentLoader } from "./api/content";
+import { loader as postLoader } from "./api/post";
 import "./main.css";
 
 const queryClient = new QueryClient({
@@ -27,11 +29,18 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        loader: postLoader(queryClient),
+        loader: contentLoader(queryClient),
       },
       {
         path: "about",
         element: <About />,
+      },
+      {
+        // path: ":section(/:type?)/:year/:month/:date/:postId",
+        // path: ":section/:year/:month/:date/:postId",
+        path: "p/:postId",
+        element: <Post />,
+        loader: postLoader(queryClient),
       },
     ],
   },

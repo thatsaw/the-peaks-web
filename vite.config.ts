@@ -14,10 +14,9 @@ export default defineConfig({
       "**/node_modules/**",
       "**/dist/**",
       "**/cypress/**",
-      "**/.{idea,git,cache,output,temp}/**",
+      "**/.{idea,git,cache,output,temp,dump}/**",
       "**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress}.config.*",
       "**/e2e/**",
-      "**/*.{stories,spec,test}.*",
     ],
   },
 });
