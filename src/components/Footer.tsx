@@ -1,9 +1,5 @@
-import { Logo } from "./Logo";
+import styles from "./Footer.module.css";
 
 export function Footer() {
-  return (
-    <footer>
-      <Logo />
-    </footer>
-  );
+  return <footer className={styles.wrapper}></footer>;
 }
