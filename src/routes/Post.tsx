@@ -22,7 +22,9 @@ export function Post() {
   console.log({ id: params.postId, post });
 
   return isLoading ? (
-    <Spinner />
+    <div className={styles.plain}>
+      <Spinner />
+    </div>
   ) : (
     <div className={styles.wrapper}>
       <div className={styles.article}>

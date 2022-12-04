@@ -20,7 +20,9 @@ export function Home() {
   const sports = content?.sports.response.results;
 
   return isLoading ? (
-    <Spinner />
+    <div className={styles.plain}>
+      <Spinner />
+    </div>
   ) : (
     <>
       <section>

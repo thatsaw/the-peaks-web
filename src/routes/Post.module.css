@@ -1,3 +1,9 @@
+.plain {
+  display: flex;
+  place-items: center;
+  height: 100vh;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
