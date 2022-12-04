@@ -7,6 +7,7 @@ import { Default } from "./layouts/Default";
 import { Home } from "./routes/Home";
 import { Post } from "./routes/Post";
 import { About } from "./routes/About";
+import { Bookmarks } from "./routes/Bookmarks";
 import { Error } from "./routes/Error";
 import { loader as contentLoader } from "./api/content";
 import { loader as postLoader } from "./api/post";
@@ -36,8 +37,11 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
+        path: "bookmarks",
+        element: <Bookmarks />,
+      },
+      {
         // path: ":section(/:type?)/:year/:month/:date/:postId",
-        // path: ":section/:year/:month/:date/:postId",
         path: "p/:postId",
         element: <Post />,
         loader: postLoader(queryClient),

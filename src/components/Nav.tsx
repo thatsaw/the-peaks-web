@@ -13,7 +13,7 @@ export function Nav({ heading }: Props) {
     <nav className={styles.wrapper}>
       <Heading text={heading} />
       <div className={styles.container}>
-        <Button text="View Bookmark" to="/about">
+        <Button text="View Bookmark" to="/bookmarks">
           <HiBookmark />
         </Button>
         <Dropdown />
