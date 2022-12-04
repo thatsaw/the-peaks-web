@@ -14,7 +14,6 @@ type LoaderData = {
 
 export function Home() {
   const { params } = useLoaderData() as LoaderData;
-  // console.log({ params });
   const { data: content, isLoading } = useQuery(contentListQuery(params));
 
   const grid = content?.top.response.results.slice(0, 5);

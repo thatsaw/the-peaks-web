@@ -12,8 +12,6 @@ type LoaderData = {
 
 export function Search() {
   const { q } = useLoaderData() as LoaderData;
-  console.log({ q });
-
   const { data: search, isLoading } = useQuery(searchListQuery(q));
   const searching = useIsFetching(["search", "list"]) > 0;
 

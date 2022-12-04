@@ -30,13 +30,13 @@ export function Dropdown() {
   }
 
   function onSelect(option: Option) {
-    console.log(selected);
     setSelected(option);
+    onOpened();
+
     navigate({
       pathname: "/",
       search: `order-by=${selected.value}`,
     });
-    onOpened();
   }
 
   return (
