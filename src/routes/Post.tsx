@@ -22,7 +22,7 @@ export function Post() {
 
   const { content } = post.post.response;
   const { lastModified, headline, trailText, body, thumbnail } = content.fields;
-  const isBookmarked = bookmarks.includes(content);
+  const isBookmarked = bookmarks?.includes(content);
 
   return isLoading ? (
     <div className={styles.plain}>
