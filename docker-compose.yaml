@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  nginx-react:
+    image: the-peaks:latest
+    container_name: the-peaks
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    env_file:
+      - .env.local
+    environment:
+      - NODE_ENV=production
