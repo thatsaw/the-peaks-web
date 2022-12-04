@@ -5,11 +5,64 @@
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.container a {
+  padding: 2rem 0;
+}
+
+.search {
+  display: flex;
+  place-items: center;
+  position: relative;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+  margin-left: auto;
+}
+.search input[type="search"] {
+  color: transparent;
+  width: 50px;
+  background-color: transparent;
+  background-image: url("/search.svg");
+  background-size: 25px;
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  border: 0;
+  border-radius: 0;
+  height: 35px;
+  padding: 5px 40px 5px 10px;
+  --webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+.search input[type="search"]:focus {
+  color: white;
+  width: 250px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.search input[type="search"]:focus::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.search input::placeholder {
+  color: transparent;
+}
+.search svg {
+  cursor: pointer;
+  color: white;
+  right: 2px;
+  position: absolute;
+  margin-right: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    align-items: flex-end;
+  }
 }
 
 @media only screen and (min-width: 1536px) {
-  .container {
+  .container a {
     padding: 2rem 0;
   }
 }

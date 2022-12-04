@@ -8,9 +8,11 @@ import { Home } from "./routes/Home";
 import { Post } from "./routes/Post";
 import { About } from "./routes/About";
 import { Bookmarks } from "./routes/Bookmarks";
+import { Search } from "./routes/Search";
 import { Error } from "./routes/Error";
 import { loader as contentLoader } from "./api/content";
 import { loader as postLoader } from "./api/post";
+import { loader as searchLoader } from "./api/search";
 import "./main.css";
 
 const queryClient = new QueryClient({
@@ -45,6 +47,11 @@ const router = createBrowserRouter([
         path: "p/:postId",
         element: <Post />,
         loader: postLoader(queryClient),
+      },
+      {
+        path: "search",
+        element: <Search />,
+        loader: searchLoader(queryClient),
       },
     ],
   },

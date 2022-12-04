@@ -1,0 +1,26 @@
+.wrapper h1 {
+  padding: 0 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    padding: 1rem;
+  }
+  .wrapper h1 {
+    padding: 0;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}

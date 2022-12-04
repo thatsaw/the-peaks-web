@@ -1,5 +1,4 @@
 import type { QueryClient } from "@tanstack/react-query";
-import type { LoaderFunctionArgs } from "react-router-dom";
 import { fetcher } from "../utils/fetcher";
 
 export type Content = {
@@ -33,43 +32,46 @@ export type Content = {
   };
 };
 
-export async function contentList(q?: string) {
+export async function contentList() {
   let pageSize = 8;
 
+  const url = `https://content.guardianapis.com/search?api-key=${
+    import.meta.env.VITE_API_KEY
+  }&show-fields=thumbnail,headline,trailText&page-size=${pageSize}`;
+
   const top: Content = await fetcher({
-    url: `https://content.guardianapis.com/search?q=${q}&api-key=${
-      import.meta.env.VITE_API_KEY
-    }&show-fields=thumbnail,headline,trailText&page-size=${pageSize}`,
+    url,
   });
 
-  q = "sports";
+  const sections = {
+    sport: "sport",
+  };
+
   pageSize = 3;
 
   const sports: Content = await fetcher({
-    url: `https://content.guardianapis.com/search?q=${q}&api-key=${
-      import.meta.env.VITE_API_KEY
-    }&show-fields=thumbnail,headline,trailText&page-size=${pageSize}`,
+    url: `${url}&section=${sections.sport}`,
   });
 
   return { top, sports };
 }
 
-export function contentListQuery(q?: string) {
+export function contentListQuery() {
   return {
-    queryKey: ["content", "list", q ?? "all"],
-    queryFn: () => contentList(q),
+    queryKey: ["content", "list", "all"],
+    queryFn: () => contentList(),
   };
 }
 
-export const loader =
-  (queryClient: QueryClient) =>
-  async ({ request }: LoaderFunctionArgs) => {
-    const url = new URL(request.url);
-    const q = url.searchParams.get("q");
+export const loader = (queryClient: QueryClient) => async () => {
+  if (!queryClient.getQueryData(contentListQuery().queryKey)) {
+    await queryClient.fetchQuery(contentListQuery());
+  }
 
-    if (q && !queryClient.getQueryData(contentListQuery(q).queryKey)) {
-      await queryClient.fetchQuery(contentListQuery(q));
-    }
+  const query = contentListQuery();
 
-    return { q };
-  };
+  return (
+    queryClient.getQueryData(query.queryKey) ??
+    (await queryClient.fetchQuery(query))
+  );
+};

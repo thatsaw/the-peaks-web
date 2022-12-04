@@ -11,7 +11,7 @@ export function Bookmarks() {
     <div className={styles.wrapper}>
       <Heading text="All bookmark" />
       <ul className={styles.container}>
-        {bookmarks.map((bookmark) => (
+        {bookmarks?.map((bookmark) => (
           <li key={bookmark.id}>
             <Link to={`/p/${encodeURIComponent(bookmark.id)}`}>
               <Card {...bookmark.fields} />

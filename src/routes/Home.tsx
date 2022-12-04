@@ -1,4 +1,4 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Card } from "../components/Card";
 import { Nav } from "../components/Nav";
@@ -7,13 +7,8 @@ import { Spinner } from "../components/Spinner";
 import { contentListQuery } from "../api/content";
 import styles from "./Home.module.css";
 
-type LoaderData = {
-  q?: string;
-};
-
 export function Home() {
-  const { q } = useLoaderData() as LoaderData;
-  const { data: content, isLoading } = useQuery(contentListQuery(q));
+  const { data: content, isLoading } = useQuery(contentListQuery());
 
   const grid = content?.top.response.results.slice(0, 5);
   const flex = content?.top.response.results.slice(5, 8);
