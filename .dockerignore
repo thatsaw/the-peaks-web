@@ -5,11 +5,12 @@
 .prettier*
 
 dist/
+dev-dist/
 build/
 node_modules/
 
-*.md
 .env*
+**/*.md
 
 e2e/
 test/
