@@ -1,3 +1,4 @@
+import { HiBookmark } from "react-icons/hi2";
 import { Heading } from "./Heading";
 import { Button } from "./Button";
 import { Dropdown } from "./Dropdown";
@@ -12,7 +13,9 @@ export function Nav({ heading }: Props) {
     <nav className={styles.wrapper}>
       <Heading text={heading} />
       <div className={styles.container}>
-        <Button text="View Bookmark" to="/about" />
+        <Button text="View Bookmark" to="/about">
+          <HiBookmark />
+        </Button>
         <Dropdown />
       </div>
     </nav>

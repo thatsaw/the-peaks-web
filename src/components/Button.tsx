@@ -1,26 +1,40 @@
 import { NavLink } from "react-router-dom";
-import { HiBookmark } from "react-icons/hi2";
 import styles from "./Button.module.css";
+import React from "react";
 
 type Props = {
   text: string;
   mode?: "primary" | "secondary";
   to?: string;
+  children?: React.ReactNode;
+  // onClick?: (event: Event) => void;
+  onClick?: () => void;
 };
 
-export function Button({ text, mode = "primary", to }: Props) {
+export function Button({
+  text,
+  mode = "primary",
+  to,
+  children,
+  onClick,
+}: Props) {
   const isPrimary = mode === "primary";
   const element = to ? (
     <NavLink to={to}>
-      <HiBookmark />
+      {children}
       <span>{text}</span>
     </NavLink>
   ) : (
-    <p>{text}</p>
+    <p>
+      {children} {text}
+    </p>
   );
 
   return (
-    <button className={isPrimary ? styles.primary : styles.secondary}>
+    <button
+      className={isPrimary ? styles.primary : styles.secondary}
+      onClick={onClick}
+    >
       {element}
     </button>
   );

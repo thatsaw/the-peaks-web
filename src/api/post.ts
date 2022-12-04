@@ -2,34 +2,36 @@ import type { QueryClient } from "@tanstack/react-query";
 import type { LoaderFunctionArgs } from "react-router-dom";
 import { fetcher } from "../utils/fetcher";
 
+export type Content = {
+  id: string;
+  type: string;
+  sectionId: string;
+  sectionName: string;
+  webPublicationDate: string;
+  webTitle: string;
+  webUrl: string;
+  apiUrl: string;
+  fields: {
+    headline: string;
+    trailText: string;
+    thumbnail: string;
+    byline: string;
+    body: string;
+    publication: string;
+    lastModified: Date;
+    standfirst: string;
+  };
+  isHosted: boolean;
+  pillarId: string;
+  pillarName: string;
+};
+
 export type Post = {
   response: {
     status: string;
     userTier: string;
     total: number;
-    content: {
-      id: string;
-      type: string;
-      sectionId: string;
-      sectionName: string;
-      webPublicationDate: string;
-      webTitle: string;
-      webUrl: string;
-      apiUrl: string;
-      fields: {
-        headline: string;
-        trailText: string;
-        thumbnail: string;
-        byline: string;
-        body: string;
-        publication: string;
-        lastModified: Date;
-        standfirst: string;
-      };
-      isHosted: boolean;
-      pillarId: string;
-      pillarName: string;
-    };
+    content: Content;
   };
 };
 

@@ -1,7 +1,10 @@
+import { HiBookmark } from "react-icons/hi2";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { postGetQuery } from "../api/post";
+import { Button } from "../components/Button";
 import { Spinner } from "../components/Spinner";
+import { useStore } from "../store";
 import styles from "./Post.module.css";
 
 export type Params = {
@@ -11,15 +14,15 @@ export type Params = {
 export function Post() {
   const params = useParams() as Params;
   const { data: post, isLoading } = useQuery(postGetQuery(params.postId));
+  const { bookmarks, addBookmark, removeBookmark } = useStore((state) => state);
 
   if (!post) {
     return <div>Not found</div>;
   }
 
-  const { lastModified, headline, trailText, body, thumbnail } =
-    post.post.response.content.fields;
-
-  console.log({ id: params.postId, post });
+  const { content } = post.post.response;
+  const { lastModified, headline, trailText, body, thumbnail } = content.fields;
+  const isBookmarked = bookmarks.includes(content);
 
   return isLoading ? (
     <div className={styles.plain}>
@@ -28,7 +31,14 @@ export function Post() {
   ) : (
     <div className={styles.wrapper}>
       <div className={styles.article}>
-        <button>Add bookmark</button>
+        <Button
+          text={isBookmarked ? "Remove bookmark" : "Add bookmark"}
+          onClick={() =>
+            isBookmarked ? removeBookmark(content) : addBookmark(content)
+          }
+        >
+          <HiBookmark />
+        </Button>
         <div className={styles.datetime}>
           {new Date(lastModified).toDateString()}
         </div>
