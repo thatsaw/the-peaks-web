@@ -26,6 +26,14 @@
   object-fit: cover;
 }
 
+.placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 5rem;
+  background-color: royalblue;
+}
+
 .webTitle {
   font-size: 20px;
   font-weight: bold;
@@ -44,19 +52,4 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-@media only screen and (min-width: 640px) {
-}
-
-@media only screen and (min-width: 768px) {
-}
-
-@media only screen and (min-width: 1024px) {
-}
-
-@media only screen and (min-width: 1280px) {
-}
-
-@media only screen and (min-width: 1536px) {
 }

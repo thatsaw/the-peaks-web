@@ -14,5 +14,6 @@ describe("Header", () => {
 
   it("should have logo link", () => {
     expect(screen.getByText(/the peaks/i)).toBeDefined();
+    expect(screen.getByPlaceholderText(/search all news/i)).toBeDefined();
   });
 });

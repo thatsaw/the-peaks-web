@@ -1,4 +1,5 @@
 import type { QueryClient } from "@tanstack/react-query";
+import { LoaderFunctionArgs } from "react-router-dom";
 import { fetcher } from "../utils/fetcher";
 
 export type Content = {
@@ -32,20 +33,25 @@ export type Content = {
   };
 };
 
-export async function contentList() {
+export type Params = {
+  orderBy: "newest" | "oldest" | "relevance" | string;
+};
+
+export async function contentList({ orderBy }: Params) {
   let pageSize = 8;
+
+  const sections = {
+    news: "news",
+    sport: "sport",
+  };
 
   const url = `https://content.guardianapis.com/search?api-key=${
     import.meta.env.VITE_API_KEY
-  }&show-fields=thumbnail,headline,trailText&page-size=${pageSize}`;
+  }&show-fields=thumbnail,headline,trailText&page-size=${pageSize}&order-by=${orderBy}`;
 
   const top: Content = await fetcher({
-    url,
+    url: `${url}&section=${sections.news}`,
   });
-
-  const sections = {
-    sport: "sport",
-  };
 
   pageSize = 3;
 
@@ -56,22 +62,26 @@ export async function contentList() {
   return { top, sports };
 }
 
-export function contentListQuery() {
+export function contentListQuery(params: Params) {
   return {
-    queryKey: ["content", "list", "all"],
-    queryFn: () => contentList(),
+    queryKey: ["content", "list", JSON.stringify(params) ?? "all"],
+    queryFn: () => contentList(params),
   };
 }
 
-export const loader = (queryClient: QueryClient) => async () => {
-  if (!queryClient.getQueryData(contentListQuery().queryKey)) {
-    await queryClient.fetchQuery(contentListQuery());
-  }
+export const loader =
+  (queryClient: QueryClient) =>
+  async ({ request }: LoaderFunctionArgs) => {
+    const url = new URL(request.url);
+    const orderBy = url.searchParams.get("order-by");
 
-  const query = contentListQuery();
+    const params = {
+      orderBy: orderBy || "newest",
+    };
 
-  return (
-    queryClient.getQueryData(query.queryKey) ??
-    (await queryClient.fetchQuery(query))
-  );
-};
+    if (!queryClient.getQueryData(contentListQuery(params).queryKey)) {
+      await queryClient.fetchQuery(contentListQuery(params));
+    }
+
+    return { params };
+  };

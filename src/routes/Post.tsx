@@ -43,7 +43,12 @@ export function Post() {
           {new Date(lastModified).toDateString()}
         </div>
         <h2 className={styles.headline}>{headline}</h2>
-        <div className={styles.trailText}>{trailText}</div>
+        <div
+          className={styles.trailText}
+          dangerouslySetInnerHTML={{
+            __html: trailText,
+          }}
+        />
         <div
           className={styles.body}
           dangerouslySetInnerHTML={{
@@ -52,16 +57,18 @@ export function Post() {
         />
       </div>
       <div className={styles.media}>
-        <figure className={styles.figure}>
-          <img
-            className={styles.image}
-            src={thumbnail}
-            alt={headline}
-            width="100%"
-            height="auto"
-          />
-          <figcaption>{headline}</figcaption>
-        </figure>
+        {thumbnail && (
+          <figure className={styles.figure}>
+            <img
+              className={styles.image}
+              src={thumbnail}
+              alt={headline}
+              width="100%"
+              height="auto"
+            />
+            <figcaption>{headline}</figcaption>
+          </figure>
+        )}
       </div>
     </div>
   );

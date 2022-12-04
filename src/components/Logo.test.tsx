@@ -14,5 +14,7 @@ describe("Logo", () => {
 
   it("should have text", () => {
     expect(screen.getByText(/the peaks/i)).toBeDefined();
+    expect(screen.getByRole("img")).toBeDefined();
+    expect(screen.getByAltText("the peaks", { exact: false })).toBeDefined();
   });
 });

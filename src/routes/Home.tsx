@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { Link, useLoaderData } from "react-router-dom";
+import type { Params } from "../api/content";
 import { Card } from "../components/Card";
 import { Nav } from "../components/Nav";
 import { Heading } from "../components/Heading";
@@ -7,8 +8,14 @@ import { Spinner } from "../components/Spinner";
 import { contentListQuery } from "../api/content";
 import styles from "./Home.module.css";
 
+type LoaderData = {
+  params: Params;
+};
+
 export function Home() {
-  const { data: content, isLoading } = useQuery(contentListQuery());
+  const { params } = useLoaderData() as LoaderData;
+  // console.log({ params });
+  const { data: content, isLoading } = useQuery(contentListQuery(params));
 
   const grid = content?.top.response.results.slice(0, 5);
   const flex = content?.top.response.results.slice(5, 8);
@@ -20,7 +27,7 @@ export function Home() {
     </div>
   ) : (
     <>
-      <section>
+      <section className={styles.section}>
         <Nav heading="Top stories" />
         <div className={styles.wrapper}>
           {grid?.map((post, index) => (

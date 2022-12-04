@@ -2,6 +2,10 @@ p {
   margin: 0;
 }
 
+.section {
+  padding-top: 2rem;
+}
+
 .plain {
   display: flex;
   place-items: center;

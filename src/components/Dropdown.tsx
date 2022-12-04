@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
 import styles from "./Dropdown.module.css";
 
@@ -19,6 +20,7 @@ const options: Option[] = [
 ];
 
 export function Dropdown() {
+  const navigate = useNavigate();
   const [opened, setOpened] = useState(false);
   const [selected, setSelected] = useState(options[0]);
   const border = "1px solid gray";
@@ -28,7 +30,12 @@ export function Dropdown() {
   }
 
   function onSelect(option: Option) {
+    console.log(selected);
     setSelected(option);
+    navigate({
+      pathname: "/",
+      search: `order-by=${selected.value}`,
+    });
     onOpened();
   }
 

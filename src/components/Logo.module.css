@@ -8,3 +8,7 @@
 .logo:hover {
   color: aquamarine;
 }
+.logo img {
+  max-width: 150px;
+  height: auto;
+}
