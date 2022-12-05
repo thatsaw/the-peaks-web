@@ -12,6 +12,8 @@ export function Logo() {
         src={LogoWhite}
         alt="The Peaks"
         loading="lazy"
+        width={120}
+        height={100}
         onLoad={() => setLoaded(true)}
       />
       {!loaded && <>The Peaks</>}

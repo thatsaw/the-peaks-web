@@ -2,14 +2,22 @@
 
 #### **Q**: Why `vite`?
 
-**A**: I normally would use Next.js for this kind of sites (news, e-commerce, etc)
-for the sake of SEO optimization.
-
-#### **Q**: Why `vitest`?
-
 **A**: Unlike CRA, Vite does not build the entire application before serving,
 instead, it builds the application on demand. It also leverages the power of
 native ES modules, esbuild, and Rollup to improve development and build time.
+
+#### **Q**: Why `vitest`?
+
+**A**: Vitest is built with Vite in mind from the start, taking advantage of its
+improvements in DX, like its instant Hot Module Reload (HMR). Given Jest's
+massive adoption, Vitest provides a compatible API that allows you to use it as
+a drop-in replacement in most projects. It also includes the most common
+features required when setting up your unit tests (mocking, snapshots,
+coverage). Vitest cares a lot about performance and uses Worker threads to run
+as much as possible in parallel. Even with all these improvements in DX, Vitest
+stays lightweight by carefully choosing its dependencies (or directly inlining
+needed pieces). Vitest aims to position itself as the Test Runner of choice for
+Vite projects, and as a solid alternative even for projects not using Vite.
 
 #### **Q**: Why `react-router`?
 
