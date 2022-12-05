@@ -18,7 +18,23 @@ export function Home() {
 
   const grid = content?.top.response.results.slice(0, 5);
   const flex = content?.top.response.results.slice(5, 8);
-  const sports = content?.sports.response.results;
+
+  // Filter results by sectionId for category based news section
+  const sports = content?.categories.response.results.filter(
+    (result) => result.sectionId === "sport"
+  );
+  const cultures = content?.categories.response.results.filter(
+    (result) => result.sectionId === "culture"
+  );
+  const lifeandstyles = content?.categories.response.results.filter(
+    (result) => result.sectionId === "lifeandstyle"
+  );
+
+  const categories = [
+    { name: "Sport", results: sports },
+    { name: "Culture", results: cultures },
+    { name: "Lifestyle", results: lifeandstyles },
+  ];
 
   return isLoading ? (
     <div className={styles.plain}>
@@ -53,18 +69,20 @@ export function Home() {
           ))}
         </div>
       </section>
-      <section className={styles.section}>
-        <Heading text="Sports" />
-        <div className={styles.flexer} style={{}}>
-          {sports?.slice(0, 3).map((post) => (
-            <div key={post.webTitle}>
-              <Link to={`p/${encodeURIComponent(post.id)}`}>
-                <Card {...post.fields} />
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
+      {categories.map(({ name, results }) => (
+        <section key={name} className={styles.section}>
+          <Heading text={name} />
+          <div className={styles.flexer} style={{}}>
+            {results?.slice(0, 3).map((post) => (
+              <div key={post.webTitle}>
+                <Link to={`p/${encodeURIComponent(post.id)}`}>
+                  <Card {...post.fields} />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
     </>
   );
 }

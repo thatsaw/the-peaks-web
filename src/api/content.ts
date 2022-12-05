@@ -38,11 +38,11 @@ export type Params = {
 };
 
 export async function contentList({ orderBy }: Params) {
-  let pageSize = 8;
+  const pageSize = 8;
 
   const sections = {
     news: "news",
-    sport: "sport",
+    categories: "sport|culture|lifeandstyle",
   };
 
   const url = `https://content.guardianapis.com/search?api-key=${
@@ -53,13 +53,11 @@ export async function contentList({ orderBy }: Params) {
     url: `${url}&section=${sections.news}`,
   });
 
-  pageSize = 3;
-
-  const sports: Content = await fetcher({
-    url: `${url}&section=${sections.sport}`,
+  const categories: Content = await fetcher({
+    url: `${url}&section=${sections.categories}`,
   });
 
-  return { top, sports };
+  return { top, categories };
 }
 
 export function contentListQuery(params: Params) {
