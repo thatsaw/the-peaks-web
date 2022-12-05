@@ -2,9 +2,13 @@
 
 Open journalism for everyone.
 
+This project built upon [The Guardian Open Platform](https://open-platform.theguardian.com/).
+If you don't have the API key, please register for a developer account and get one.
+
 # Prerequisites
 
 - [Node.js](https://nodejs.org/en/) >= v18 (preferred current version)
+- [Open Platform developer key](https://bonobo.capi.gutools.co.uk/register/developer)
 
 # Quick start
 
