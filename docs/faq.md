@@ -56,12 +56,18 @@ network interception to stub and mock network requests. Modern web features.
 
 #### **Q**: Why CSS modules?
 
-**A**:
+**A**: We could use SASS or popular CSS-in-JS libraries, such as
+`styled-components` and `emotion`, or `vanilla-extract`. However, since this
+project meant for skill evaluation, I believe that CSS modules is the right fit
+for this project.
 
 #### **Q**: Why put all components in a directory spreading?
 
-**A**:
+**A**: It depends on personal preference. It may vary at different orginzations
+and projects.
 
 #### **Q**: Why Docker?
 
-**A**:
+**A**: We do not need Docker for this project to run in either development or
+production. But some origizations choose to run React in Docker with Nginx on
+k8s.
