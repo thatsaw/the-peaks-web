@@ -58,8 +58,8 @@ network interception to stub and mock network requests. Modern web features.
 
 **A**: We could use SASS or popular CSS-in-JS libraries, such as
 `styled-components` and `emotion`, or `vanilla-extract`. However, since this
-project meant for skill evaluation, I believe that CSS modules is the right fit
-for this project.
+project meant for skill evaluation, I believe that CSS modules are the right
+fit.
 
 #### **Q**: Why put all components in a directory spreading?
 
