@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, memo } from "react";
 import styles from "./Card.module.css";
 import LogoGray from "../assets/logo-gray.svg";
 
@@ -12,7 +12,11 @@ export function Card({ headline, trailText, thumbnail }: Props) {
   const colors = ["yellow", "green", "red", "blue"];
   const color = useMemo(
     () => colors[Math.floor(Math.random() * colors.length)],
-    [colors]
+    /**
+     * Do not add colors as dependency here, otherwise it will rerender
+     * and change the color on click.
+     */
+    []
   );
 
   return (
